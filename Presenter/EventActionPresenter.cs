@@ -32,15 +32,38 @@
          _view.EventItemChecked += (s, e) => SaveActiveOnly(e.Item.Text);
       }
 
-      public static string DynamicFolder
-      {
-         get
-         {
-            var extensionFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var fullPath = Path.Combine(extensionFolder, "SavedEventActions");
-            return fullPath;
-         }
-      }
+       public static string DynamicFolder
+       {
+          get
+          {
+             ThreadHelper.ThrowIfNotOnUIThread();
+             try
+             {
+                // Get the DTE service
+                var dte = (DTE) Package.GetGlobalService(typeof(DTE));
+      
+                // Check if a solution is loaded
+                if (dte?.Solution != null && dte.Solution.IsOpen)
+                {
+                   var solutionPath = dte.Solution.FullName;
+                   if (!string.IsNullOrEmpty(solutionPath))
+                   {
+                      // Get the directory containing the solution file
+                      var solutionDir = Path.GetDirectoryName(solutionPath);
+                      return Path.Combine(solutionDir, "SavedEventActions");
+                   }
+                }
+             }
+             catch (Exception)
+             {
+                // Handle any potential errors (optional: add logging)
+             }
+      
+             // Fallback to original behavior if no solution is loaded
+             var extensionFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+             return Path.Combine(extensionFolder, "SavedEventActions");
+          }
+       }
 
       public void LoadSavedEvents()
       {
