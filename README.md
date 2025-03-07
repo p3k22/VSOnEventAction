@@ -29,7 +29,7 @@ Requirements: Visual Studio 2019 or later (Community, Professional, or Enterpris
 ⚙️ Configuration
 
 VSOnEventAction is as flexible as it is powerful. Customize your actions via Tools > P3k VS Event Actions;
-![Alt text](https://github.com/p3k22/VSOnEventAction/tree/main/preview.png)
+![img](https://raw.githubusercontent.com/p3k22/VSOnEventAction/refs/heads/main/preview.png)
 
 
 🎯 Use Cases
