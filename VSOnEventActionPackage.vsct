@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="stdidcmd.h" />
+
+	<Extern href="vsshlids.h" />
+
+	<Commands package="guidVSOnEventActionPackage">
+
+		<Groups>
+			<Group guid="guidVSOnEventActionPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+			</Group>
+		</Groups>
+
+		<Buttons>
+			<Button guid="guidVSOnEventActionPackageCmdSet" id="Command1Id" priority="0x0100" type="Button">
+				<Parent guid="guidVSOnEventActionPackageCmdSet" id="MyMenuGroup" />
+				<Icon guid="guidImages" id="bmpPic1" />
+				<Strings>
+					<ButtonText>P3k VS Event Actions</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+
+		<Bitmaps>
+			<Bitmap guid="guidImages" href="Resources\Command1.png"
+			        usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+		</Bitmaps>
+	</Commands>
+
+	<Symbols>
+		<GuidSymbol name="guidVSOnEventActionPackage" value="{06da98f4-5d14-4371-a5b5-15188ea37bf5}" />
+
+		<GuidSymbol name="guidVSOnEventActionPackageCmdSet" value="{eea8d766-33e6-46ba-82d9-fdaf271f0873}">
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="Command1Id" value="0x0100" />
+		</GuidSymbol>
+
+		<GuidSymbol name="guidImages" value="{5fdaf999-7667-45a9-9a9b-548a314d1289}">
+			<IDSymbol name="bmpPic1" value="1" />
+			<IDSymbol name="bmpPic2" value="2" />
+			<IDSymbol name="bmpPicSearch" value="3" />
+			<IDSymbol name="bmpPicX" value="4" />
+			<IDSymbol name="bmpPicArrows" value="5" />
+			<IDSymbol name="bmpPicStrikethrough" value="6" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
